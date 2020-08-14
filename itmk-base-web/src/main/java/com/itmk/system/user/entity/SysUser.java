@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.itmk.system.permission.entity.Permission;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
@@ -64,8 +63,8 @@ public class SysUser  implements Serializable, UserDetails {
     //是否是管理员 1：是 0 ：不是
     private String isAdmin;
     //用户权限列表,不属于用户表字段，需要排除
-    @TableField(exist = false)
-    List<Permission> permissionList;
+//    @TableField(exist = false)
+//    List<Permission> permissionList;
     //0:男 1：女
     private String sex;
 }

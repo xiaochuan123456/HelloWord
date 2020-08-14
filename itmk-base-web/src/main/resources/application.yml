@@ -13,7 +13,7 @@ spring:
     password: 123456
 #jwt配置
 jwt:
-  secret: com.itmk
+  secret: dfsdfsdfsdgjkhzcv
   expiration: 3000000
 itmk:
   loginUrl: /api/user/login
