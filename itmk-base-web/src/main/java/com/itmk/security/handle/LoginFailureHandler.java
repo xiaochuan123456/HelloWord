@@ -3,8 +3,7 @@ package com.itmk.security.handle;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.itmk.result.ResultUtils;
-import org.springframework.security.authentication.AccountExpiredException;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -55,7 +54,5 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
         out.write(res.getBytes("UTF-8"));
         out.flush();
         out.close();
-    }
-}
     }
 }

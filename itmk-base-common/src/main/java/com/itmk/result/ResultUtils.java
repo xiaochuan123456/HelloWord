@@ -3,7 +3,7 @@ package com.itmk.result;
 import com.itmk.status.StatusCode;
 
 /**
- * 返回工具类
+ * 数据返回工具类
  */
 public class ResultUtils {
     public static  ResultVo vo(String msg,int code,Object data){

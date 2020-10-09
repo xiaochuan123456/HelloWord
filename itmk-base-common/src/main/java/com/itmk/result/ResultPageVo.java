@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * 带分页返回值封装
+ * 返回分页数据实体
  * @param <T>
  */
 @Data
