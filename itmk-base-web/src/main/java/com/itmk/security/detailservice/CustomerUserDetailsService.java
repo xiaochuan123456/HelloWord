@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,17 +17,20 @@ public class CustomerUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 //    @Autowired
 //    private PermissionService permissionService;
 //    @Autowired
 //    private CacheService cacheService;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        //1.从数据库查询用户是否存在
+        //1.根据用户名从数据库查询用户是否存在
         SysUser user = userService.getUserByUserName(username);
 //        //缓存key
 //        String userKey = KeyCode.USER_KEY+username;
 //        SysUser user =  cacheService.getEntityCache(userKey,600000000L,SysUser.class,() -> userService.getUserByUserName(username));
+        //用户不存在抛出异常
         if (user == null) {
             throw new UsernameNotFoundException("用户名或密码错误!");
         }

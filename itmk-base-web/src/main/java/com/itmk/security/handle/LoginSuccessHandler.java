@@ -5,6 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.itmk.jwt.JwtUtils;
 import com.itmk.result.ResultUtils;
 import com.itmk.system.user.entity.SysUser;
+import com.itmk.system.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -18,12 +19,15 @@ import java.io.IOException;
 
 /**
  * 登录成功处理器
+ * 登录成功要返回json和token
  * @author xlc
  */
 @Component("loginSuccessHandle")
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Autowired
     private JwtUtils jwtUtils;
+    @Autowired
+    private UserService userService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
@@ -32,6 +36,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         String token = jwtUtils.generateToken(user);
         MenuVo menuVo = new MenuVo();
         menuVo.setToken(token);
+        String username = ((UserDetails) authentication.getPrincipal()).getUsername();
 
         String res = JSONObject.toJSONString(ResultUtils.success("认证成功",menuVo), SerializerFeature.DisableCircularReferenceDetect);
         httpServletResponse.setContentType("application/json;charset=UTF-8");

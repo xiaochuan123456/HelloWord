@@ -12,12 +12,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 
 /**
   * 用户表实体
-  * @Data lombok插件自动生成get和set方法
+  * @author Admin
   * @TableName  实体对应的数据库表的名称
   * @TableId  数据库主键对应的字段
   */
@@ -62,10 +61,11 @@ public class SysUser  implements Serializable, UserDetails {
     private Date updateTime;
     //是否是管理员 1：是 0 ：不是
     private String isAdmin;
-    //用户权限列表,不属于用户表字段，需要排除
-//    @TableField(exist = false)
-//    List<Permission> permissionList;
     //0:男 1：女
     private String sex;
+
+//    用户权限列表,不属于用户表字段，需要排除
+//    @TableField(exist = false)
+//    List<Permission> permissionList;
 }
 

@@ -29,7 +29,7 @@ public class ResultPageVo<T> {
     /**
      * 数据总条数
      */
-    private int toatl;
+    private int total;
     /**
      * 返回的数据
      */
