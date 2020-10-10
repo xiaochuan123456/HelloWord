@@ -1,4 +1,4 @@
-package com.itmk.system.permisssion.entity;
+package com.itmk.system.permission.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

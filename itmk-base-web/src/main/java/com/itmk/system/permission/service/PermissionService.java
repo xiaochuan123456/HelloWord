@@ -1,10 +1,13 @@
-package com.itmk.system.permisssion.service;
+package com.itmk.system.permission.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.itmk.system.permisssion.entity.Permission;
+import com.itmk.system.permission.entity.Permission;
 
 import java.util.List;
 
+/**
+ * @author xlc
+ */
 public interface PermissionService extends IService<Permission> {
 
     /**
@@ -12,13 +15,13 @@ public interface PermissionService extends IService<Permission> {
      * @param userId
      * @return
      */
-    List<Permission> selectPermissionByUserId(Long userId);
+    List<Permission> getPermissionListByUserId(Long userId);
 
     /**
      * 根据角色id查询所有的权限
      * @param roleId
      * @return
      */
-    List<Permission> findByRoleId(Long roleId);
+    List<Permission> getPermissionListByRoleId(Long roleId);
 
 }
