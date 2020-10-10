@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.itmk.system.user.entity.SysUser;
 
 /**
- * 用户service
+ * 用户service层接口
  */
 public interface UserService extends IService<SysUser> {
     /**

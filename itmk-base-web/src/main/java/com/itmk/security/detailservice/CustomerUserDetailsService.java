@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 自定义认证类
+ * 查询数据库是否有用户
  */
 @Component("CustomerUserDetailsService")
 public class CustomerUserDetailsService implements UserDetailsService {
@@ -30,11 +31,11 @@ public class CustomerUserDetailsService implements UserDetailsService {
 //        //缓存key
 //        String userKey = KeyCode.USER_KEY+username;
 //        SysUser user =  cacheService.getEntityCache(userKey,600000000L,SysUser.class,() -> userService.getUserByUserName(username));
-        //用户不存在抛出异常
-        if (user == null) {
+        if (null == user) {
             throw new UsernameNotFoundException("用户名或密码错误!");
         }
-        //2.查询用户所有的权限
+        //2.查询用所有的权限
+        //3.设置用户的权限
 //        List<Permission> codeList = permissionService.getPermissionListByUserId(user.getId());
 //        String pkey = KeyCode.PERMISSION_KEY+username;
 //        List<Permission> codeList = cacheService.getListCache(pkey,6000000000L,Permission.class,() ->  permissionService.getPermissionListByUserId(user.getId()));

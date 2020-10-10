@@ -10,7 +10,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ResultVo<T> {
     /**
-     * 提示信息
+     * 返回提示信息
      */
     private String msg;
     /**

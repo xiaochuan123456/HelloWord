@@ -11,13 +11,12 @@ import org.springframework.stereotype.Service;
  * 用户Service实现类
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements UserService {
+public class UserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements UserService {
 
     @Override
     public SysUser getUserByUserName(String username) {
         QueryWrapper<SysUser> query = new QueryWrapper<>();
         query.lambda().eq(SysUser::getUsername,username);
-        SysUser user = this.baseMapper.selectOne(query);
-        return user;
+        return this.baseMapper.selectOne(query);
     }
 }
