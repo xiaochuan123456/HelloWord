@@ -49,7 +49,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         List<String> auth = permissionList.stream().filter(item -> item != null).map(item -> item.getCode()).collect(Collectors.toList());
         vo.setAuthList(auth);
         //4.生成菜单数据树
-        List<Permission> permissions = permissionList.stream().filter(item -> item !=null && !item.getType().equals("2")).collect(Collectors.toList())
+        List<Permission> permissions = permissionList.stream().filter(item -> item !=null && !"2".equals(item.getType())).collect(Collectors.toList());
         List<Permission> listMenu = MakeMenuTree.makeTree(permissions, 0L  );
         vo.setMenuList(listMenu);
         //5.查询路由的url

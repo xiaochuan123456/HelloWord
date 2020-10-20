@@ -17,6 +17,7 @@ import java.io.IOException;
 
 /**
  * 认证用户访问无权限资源时处理器
+ * @author xlc
  */
 @Component("customAccessDeineHandler")
 public class CustomAccessDeineHandler implements AccessDeniedHandler {

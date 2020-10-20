@@ -3,7 +3,7 @@ package com.itmk.result;
 import com.itmk.status.StatusCode;
 
 /**
- * 数据返回工具类
+ * 返回工具类
  */
 public class ResultUtils {
     public static  ResultVo vo(String msg,int code,Object data){
@@ -11,7 +11,7 @@ public class ResultUtils {
     }
     //无参数返回值
     public static ResultVo success(){
-       return vo(null, StatusCode.SUCCESS_CODE,null);
+        return vo(null, StatusCode.SUCCESS_CODE,null);
     }
     //一个参数返回值
     public static ResultVo success(String msg){
@@ -28,7 +28,7 @@ public class ResultUtils {
     //返回失败
     //无参数返回值
     public static ResultVo error(){
-        return vo(null, StatusCode.ERROR_CODE,null);
+        return vo(null, StatusCode.ERROR_CODE,null );
     }
     public static ResultVo error(String msg){
         return vo(msg, StatusCode.ERROR_CODE,null);
@@ -42,3 +42,4 @@ public class ResultUtils {
 
     }
 }
+

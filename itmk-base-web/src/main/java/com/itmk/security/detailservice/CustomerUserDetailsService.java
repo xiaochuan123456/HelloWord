@@ -38,6 +38,7 @@ public class CustomerUserDetailsService implements UserDetailsService {
 //        //缓存key
 //        String userKey = KeyCode.USER_KEY+username;
 //        SysUser user =  cacheService.getEntityCache(userKey,600000000L,SysUser.class,() -> userService.getUserByUserName(username));
+
         //2.用户不存在抛出异常
         if (null == user) {
             throw new UsernameNotFoundException("用户名或密码错误!");
