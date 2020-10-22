@@ -34,7 +34,7 @@ public class ResultUtils {
         return vo(msg, StatusCode.ERROR_CODE,null);
     }
     public static ResultVo error(String msg,int code,Object data){
-        return vo(msg, code,data);
+        return vo(msg,code,data);
     }
     //带分页返回
     public static ResultPageVo success(String msg,int pageNum,int pageSize,int total,Object data){

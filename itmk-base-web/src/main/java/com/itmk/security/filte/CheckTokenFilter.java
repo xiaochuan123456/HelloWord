@@ -22,8 +22,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author xlc
+ */
 @Component("checkTokenFilter")
-public class checkTokenFilter extends OncePerRequestFilter {
+public class CheckTokenFilter extends OncePerRequestFilter {
 
     @Value("${itmk.loginUrl}")
     private String loginUrl;
@@ -49,8 +52,8 @@ public class checkTokenFilter extends OncePerRequestFilter {
             }
         }else {
             //验证token,验证码请求不需要验证token
-            String imgurl = request.getRequestURI();
-            if(!imgurl.equals(imgUrl)){
+            //String imgUrl = request.getRequestURI();
+            if(!imgUrl.equals(url)){
                 try{
                     validateToken(request);
                 }catch (AuthenticationException e){

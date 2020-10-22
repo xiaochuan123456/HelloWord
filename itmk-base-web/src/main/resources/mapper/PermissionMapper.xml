@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itmk.system.permission.mapper.PermissionMapper">
-    <select parameterType="Long" id="getPermissionListByUserId" resultType="com.itmk.system.permission.entity.Permission">
+    <select parameterType="long" id="getPermissionListByUserId" resultType="com.itmk.system.permission.entity.Permission">
         select distinct
             p.id,
             p.parent_id,
@@ -11,7 +11,8 @@
             p.url,
             p.type,
             p.icon,
-            p.remake,
+            p.code,
+            p.remark,
             p.create_time,
             p.update_time,
             p.label,
@@ -27,9 +28,8 @@
         order by p.order_num asc
      </select>
 
-    <select id="getPermissionListByRoleId" resultType="com.itmk.system.permission.entity.Permission">
-        select
-             distinct p.*
+    <select parameterType="long" id="getPermissionListByRoleId" resultType="com.itmk.system.permission.entity.Permission">
+        select distinct p.*
         from sys_permissino p
         join sys_role_permission rp on p.id = rp.permisssion_id
         join sys_role sr on rp.role_id = sr.id

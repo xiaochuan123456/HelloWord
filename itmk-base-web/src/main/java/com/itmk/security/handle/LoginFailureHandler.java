@@ -20,7 +20,7 @@ import java.io.IOException;
  * 登录失败处理器
  * @author xlc
  */
-@@Component("loginFailureHandle")
+@Component("loginFailureHandle")
 public class LoginFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
@@ -41,13 +41,15 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
             str = "账户被锁，登录失败!";
         } else if(e instanceof InternalAuthenticationServiceException) {
             str = "账户不存在，登录失败!";
-        } else if(e instanceof ImageCodeException) {
-            //验证码异常
-            str = e.getMessage();
-        } else if(e instanceof TokenException) {
+        }
+//        else if(e instanceof ImageCodeException) {
+//            //验证码异常
+//            str = e.getMessage();
+//        }
+        else if(e instanceof TokenException) {
             //token异常
             code = 600;
-            str = e.getMessage();
+            str = "token异常";
         } else {
             str = "登录失败!";
         }
