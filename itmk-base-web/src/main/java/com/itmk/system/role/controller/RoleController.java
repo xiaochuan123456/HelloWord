@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/api/role")
 public class RoleController {
@@ -93,5 +95,15 @@ public class RoleController {
         page.setCurrent(roleParm.getCurrentPage());
         IPage<SysRole> roleList = roleService.page(page, query);
         return ResultUtils.success("查询成功", roleList);
+    }
+
+    /**
+     * 分配角色时查询角色列表
+     * @return
+     */
+    @PostMapping("/getRoleListForAssign")
+    public ResultVo getRoleListForAssign(){
+        List<SysRole> list = roleService.list();
+        return ResultUtils.success("成功",list);
     }
 }
