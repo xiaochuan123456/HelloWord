@@ -8,15 +8,16 @@ import com.itmk.result.ResultVo;
 import com.itmk.system.role.entity.SysRole;
 import com.itmk.system.role.service.RoleService;
 import com.itmk.system.role.vo.RoleParm;
+import com.itmk.system.user_role.entity.UserRole;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author xlc
+ */
 @RestController
 @RequestMapping(value = "/api/role")
 public class RoleController {
@@ -106,4 +107,28 @@ public class RoleController {
         List<SysRole> list = roleService.list();
         return ResultUtils.success("成功",list);
     }
+
+    /**
+     * 根据用户id查询角色id
+     * @return
+     */
+    @PostMapping("/getRoleIdByUserId")
+    public ResultVo getRoleIdByUserId(@RequestBody UserRole userRole){
+        UserRole RoleId = roleService.getRoleIdByUserId(userRole.getUserId());
+        return ResultUtils.success("查询成功", RoleId);
+    }
+
+    /**
+     * 分配用户的角色
+     * @param userRole
+     * @return
+     */
+    @RequestMapping(value = "/assignRole",method = RequestMethod.POST)
+    public ResultVo assignRole(@RequestBody UserRole userRole){
+      roleService.assignRole(userRole);
+
+            return ResultUtils.success("分配角色成功!");
+
+    }
+
 }
