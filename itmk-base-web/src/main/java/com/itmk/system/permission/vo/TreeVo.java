@@ -2,6 +2,9 @@ package com.itmk.system.permission.vo;
 
 import lombok.Data;
 
+/**
+ * @author xlc
+ */
 @Data
 public class TreeVo {
     //树的id
